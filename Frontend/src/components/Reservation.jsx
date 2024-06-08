@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import axios from "axios";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +15,16 @@ const Reservation = () => {
 
   const handleReservation = async (e) => {
     e.preventDefault();
+    
+    const selectedDate = new Date(date);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
+    if (selectedDate < currentDate) {
+      toast.error("Cannot book a reservation for a past date.");
+      return;
+    }
+
     try {
       const { data } = await axios.post(
         "http://localhost:4000/api/v1/Reservation/send",
@@ -38,6 +47,14 @@ const Reservation = () => {
     } catch (error) {
       toast.error(error.response.data.message);
     }
+  };
+
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   };
 
   return (
@@ -70,6 +87,7 @@ const Reservation = () => {
                   type="date"
                   placeholder="Date"
                   value={date}
+                  min={getCurrentDate()}
                   onChange={(e) => setDate(e.target.value)}
                 />
                 <input

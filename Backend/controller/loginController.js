@@ -1,12 +1,10 @@
-// Import required modules
-import { User } from "../models/Usermodel.js"; // Assuming you have a User model
+import { User } from "../models/Usermodel.js";
 
-// Controller for handling login logic
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check if user exists in database
+    // Check if user exists in the database
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -23,8 +21,7 @@ export const loginUser = async (req, res) => {
     // Authentication successful
     res.status(200).json({ success: true, message: "Login successful", user });
   } catch (error) {
-    // Handle errors
-    console.error("Login error:", error);
+    console.error("Login error:", error.message);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };

@@ -16,7 +16,7 @@ dotenv.config({ path: "./config/config.env" });
 // Middleware
 app.use(cors({
   origin: [process.env.FRONTEND_URL],
-  methods: ["POST"],
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allow all necessary methods
   credentials: true,
 }));
 app.use(express.json());
@@ -29,7 +29,7 @@ app.use(morgan("dev")); // Log requests in dev format
 app.use("/api/v1/reservation", reservationRouter);
 app.use("/api/v1/login", loginRouter); // Use the login route
 app.use("/api/v1/signup", signupRouter); // Use the signup route
-app.use("/api", paymentRouter); // Use the payment route
+app.use("/api/v1/paymentverification", paymentRouter); // Use the payment route
 app.use("/api/v1/reset-password", passwordResetRouter); // Use the password reset route
 
 // Connect to MongoDB

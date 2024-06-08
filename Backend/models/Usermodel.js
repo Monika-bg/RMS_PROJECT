@@ -1,8 +1,4 @@
-// Usermodel.js
-
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
-import crypto from "crypto";
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -18,8 +14,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  resetPasswordToken: String,
-  resetPasswordExpires: Date,
+  dateOfBirth: {
+    type: Date,
+    required: true
+  },
   isVerified: {
     type: Boolean,
     default: false
@@ -35,49 +33,8 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    return next();
-  }
-
-  try {
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (error) {
-    next(error);
-  }
-});
-
 userSchema.methods.comparePassword = async function (password) {
-  try {
-    return await bcrypt.compare(password, this.password);
-  } catch (error) {
-    throw error;
-  }
-};
-
-userSchema.methods.generateResetToken = async function() {
-  try {
-    const resetToken = crypto.randomBytes(20).toString('hex');
-    this.resetPasswordToken = resetToken;
-    this.resetPasswordExpires = Date.now() + 3600000; // Token expires in 1 hour
-    await this.save();
-    return resetToken;
-  } catch (error) {
-    throw error;
-  }
-};
-
-userSchema.statics.findByResetToken = async function(token) {
-  try {
-    return await this.findOne({
-      resetPasswordToken: token,
-      resetPasswordExpires: { $gt: Date.now() } // Token should not be expired
-    });
-  } catch (error) {
-    throw error;
-  }
+  return password === this.password;
 };
 
 userSchema.statics.findByEmail = async function(email) {
@@ -88,11 +45,33 @@ userSchema.statics.findByEmail = async function(email) {
   }
 };
 
-userSchema.statics.signup = async function(name, email, password) {
+userSchema.statics.signup = async function(name, email, password, dateOfBirth) {
   try {
-    const user = new this({ name, email, password });
+    const user = new this({ name, email, password, dateOfBirth });
     await user.save();
     return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
+userSchema.statics.resetPassword = async function(email, dateOfBirth, newPassword) {
+  try {
+    const user = await this.findByEmail(email);
+    if (!user) {
+      throw new Error("User not found.");
+    }
+    
+    const providedDate = new Date(dateOfBirth).toISOString().split('T')[0];
+    const storedDate = user.dateOfBirth.toISOString().split('T')[0];
+    
+    if (providedDate !== storedDate) {
+      throw new Error("Date of birth does not match.");
+    }
+    
+    user.password = newPassword;
+    await user.save();
+    return true;
   } catch (error) {
     throw error;
   }
