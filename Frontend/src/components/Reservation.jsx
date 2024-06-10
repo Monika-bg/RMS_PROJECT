@@ -43,7 +43,7 @@ const Reservation = () => {
       setEmail("");
       setTime("");
       setDate("");
-      navigate("/success");
+    
     } catch (error) {
       toast.error(error.response.data.message);
     }

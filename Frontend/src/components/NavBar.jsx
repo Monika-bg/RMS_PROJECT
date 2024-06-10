@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { data } from "../pages/restApi.json";
-import { Link as ScrollLink } from "react-scroll"; 
-import { NavLink, useNavigate } from "react-router-dom"; 
+import { Link as ScrollLink } from "react-scroll";
+import { NavLink, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
@@ -14,6 +14,7 @@ const Navbar = () => {
     } else {
       // Scroll to other sections
       // Adjust as per your scroll logic, I assume you already have it
+      // You can use scrollToSection(link) or any appropriate function here
     }
     setShow(false); // Close the menu after navigating
   };
@@ -36,11 +37,23 @@ const Navbar = () => {
               {element.title}
             </ScrollLink>
           ))}
+          <ScrollLink
+            to="view-menu"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={1000}
+            onClick={() => handleNavLinkClick("view-menu")}
+          >
+            VIEW MENU
+          </ScrollLink>
         </div>
-        <NavLink to="/login" className="menuBtn">Order Online</NavLink>
+        <NavLink to="/login" className="menuBtn">
+          Order Online
+        </NavLink>
       </div>
       <div className="hamburger" onClick={() => setShow(!show)}>
-        <GiHamburgerMenu/>
+        <GiHamburgerMenu />
       </div>
     </nav>
   );

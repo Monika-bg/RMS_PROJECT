@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
+
+.special__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; /* Increased font size */
+  font-weight: bold;
+  color: #DCCA87; /* Updated color */
+  text-transform: uppercase; /* Added style */
+  letter-spacing: 0.05em; /* Added style */
+  margin-bottom: 0.1rem; /* Reduced margin */
+}
+
+.special__heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; /* Increased font size */
+  font-weight: bold;
+  color: #DCCA87; /* Updated color */
+  margin-bottom: 0.1rem; /* Reduced margin */
+}
+
+.app__specialMenu {
+  display: flex;
+  flex-direction: column;
+  background-color: #1c1c1c; /* Changed to grey-black background */
+  padding: 2rem; /* Fixed padding */
+}
+
+.app__specialMenu-title {
+  margin-bottom: 1rem; /* Reduced margin */
+  text-align: center;
+}
+
+.app__specialMenu-menu {
+  width: 100%;
+  margin: 1rem 0; /* Reduced margin */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.app__specialMenu-menu_heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 58.5px;
+  letter-spacing: 0.04em;
+  color: #DCCA87; /* Updated color */
+}
+
+.app__specialMenu-menu_wine,
+.app__specialMenu-menu_cocktails {
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+}
+
+.app__specialMenu-menu_img {
+  width: 410px;
+  margin: 0 2rem;
+}
+
+.app__specialMenu-menu_img img {
+  width: 100%;
+  height: auto;
+}
+
+.app__specialMenu_menu_items {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.menu-item-title {
+  display: flex;
+  align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+  color: #DCCA87; /* Updated color */
+}
+
+.menu-item-title h3 {
+  margin: 0;
+  font-size: 20px; /* Adjust as needed */
+}
+
+.dash {
+  margin: 0 0.5rem;
+}
+
+.menu-item-price {
+  font-size: 20px; /* Adjust as needed */
+  color: #DCCA87; /* Updated color */
+}
+
+.menu-item-tags {
+  font-size: 16px;
+  color: var(--color-grey);
+}
+
+.custom__button {
+  background-color: #DCCA87; /* Updated color */
+  border: none;
+  color: #1c1c1c; /* Contrast color for text */
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: 'sans-serif'; /* Updated font family */
+  font-weight: bold; /* Added font weight for boldness */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom__button:hover {
+  background-color: #b59c6a; /* Slightly darker shade for hover effect */
+}
+
+@media screen and (min-width: 2000px) {
+  .app__specialMenu-menu_img {
+    width: 650px;
+  }
+
+  .app__specialMenu-menu_img img {
+    height: 920px;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .app__specialMenu-menu {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .app__specialMenu-menu_img {
+    margin: 3rem 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .app__specialMenu-menu_img {
+    width: 100%;
+  }
+
+  .app__specialMenu-menu_heading {
+    font-size: 35px;
+    line-height: 48.5px;
+  }
+}
+/* Existing CSS styles... */
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.menu-item-title {
+  display: flex;
+  align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+  color: #DCCA87; /* Updated color */
+}
+
+.menu-item-title h3 {
+  margin: 0;
+  font-size: 20px; /* Adjust as needed */
+}
+
+.dash {
+  margin: 0 0.5rem;
+  color: #DCCA87; /* Updated color */
+}
+
+
+
+/* Existing CSS styles... */
+/* Existing CSS styles... */
+
+.p__cormorant {
+  font-size: 20px; /* Adjust as needed */
+  color: #DCCA87; /* Updated color */
+}
+
+/* Existing CSS styles... */
