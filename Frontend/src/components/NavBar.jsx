@@ -3,6 +3,7 @@ import { data } from "../pages/restApi.json";
 import { Link as ScrollLink } from "react-scroll";
 import { NavLink, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import './logo.css';
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -21,7 +22,10 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="logo">PALATE PLEASERS</div>
+      <div className="logo">
+        <img src="/logo.jpg" alt="Logo" className="logo-image" /> {/* Add your logo here */}
+        PALATE PLEASERS
+      </div>
       <div className={show ? "navLinks showmenu" : "navLinks"}>
         <div className="links">
           {data[0].navbarLinks.map((element) => (

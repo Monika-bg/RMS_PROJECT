@@ -1,0 +1,11 @@
+.logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-image {
+    width: 40px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 10px; /* Space between the logo and the text */
+  }
+  

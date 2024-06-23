@@ -6,11 +6,15 @@ const Navbar = () => {
   const dispatch = useDispatch();
   return (
     <nav className="flex flex-col lg:flex-row justify-between py-3 mx-6 mb-10">
-      <div>
-        <h3 className="text-xl font-bold text-gray-600">
-          {new Date().toUTCString().slice(0, 16)}
-        </h3>
-        <h1 className="text-2xl font-bold ">Palate plesears</h1>
+      <div className="flex items-center">
+        {/* Add the logo image directly from the public folder */}
+        <img src="/logo.jpg" alt="Logo" className="h-10 mr-3" />
+        <div>
+          <h3 className="text-xl font-bold text-gray-600">
+            {new Date().toUTCString().slice(0, 16)}
+          </h3>
+          <h1 className="text-2xl font-bold">Palate Pleasures</h1>
+        </div>
       </div>
       <div>
         <input

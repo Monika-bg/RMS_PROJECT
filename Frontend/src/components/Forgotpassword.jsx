@@ -32,7 +32,7 @@ const ForgotPassword = () => {
             if (error.response && error.response.data.message === "Date of birth does not match.") {
                 toast.error("Date of birth does not match. Password reset failed.");
             } else {
-                toast.error("An error occurred. Please try again.");
+                toast.error("Date of birth does not match. Password reset failed.");
             }
         }
     };
@@ -52,7 +52,7 @@ const ForgotPassword = () => {
             {/* Success popup */}
             {showSuccessPopup && (
                 <div className="success-popup">
-                    <p>Password reset successful!</p>
+                    
                     {/* Add a button or link to close the popup if needed */}
                 </div>
             )}

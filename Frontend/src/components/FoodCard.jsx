@@ -31,7 +31,7 @@ const FoodCard = ({ id, name, price, desc, img, rating, handleToast }) => {
           }}
           className="p-1 text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm"
         >
-          Add to cart
+          ORDER NOW
         </button>
       </div>
     </div>
